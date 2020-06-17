@@ -1,0 +1,42 @@
+h1 {
+    color: blue;
+}
+
+img {
+    width: 250px;
+}
+
+body {
+    color      : #333333;
+    font-family: arial;
+    margin     : 0 auto;
+    padding    : 5px;
+
+    display       : flex;
+    flex-direction: column;
+    min-height    : 98vh;
+}
+
+.main-content {
+    flex-grow: 1;
+}
+
+
+footer {
+    color     : #888888;
+    border-top: 2px solid #4a2970;
+    margin-top: 16px;
+    
+}
+
+input{
+    padding: 8px;
+    border: 1px solid #cccccc;
+}
+
+button{
+    padding: 8px;
+    border: 1px solid #888888;
+    cursor: pointer;
+    background-color: slategrey;
+}
