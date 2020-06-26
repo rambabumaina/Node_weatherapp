@@ -3,6 +3,7 @@ const path = require('path');
 const hbs = require('hbs');
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
+const news = require('./utils/news')
 
 
 console.log(__dirname)
@@ -24,31 +25,42 @@ hbs.registerPartials(partialsdir)
 //express.static used for static page render
 app.use(express.static(publicdir))
 
-app.get('', (req, res) => {
-    res.render('index', {
-        title: 'Weather app',
-        appname: 'weather',
-        name: 'Ram',
-        description: 'This is home page of weather app',
+app.get('/', (req, res) => {
+    res.render('homepage', {
+        title: 'home',
+        name: 'Ram'
+    })
+})
+
+app.get('/news', (req, res) => {
+    res.render('newsPage', {
+        title: 'home',
+        name: 'Ram'
+    })
+})
+
+app.get('/newstoday', (req, res) => {
+    news((error, response) => {
+        if (error) {
+            return res.status(500).json({
+                status: 'error',
+                error: 'unable to connect news API',
+            });
+        }
+        res.send(response)
+    })
+})
+
+app.get('/about', (req, res) => {
+    res.render('about', {
+        title: 'about',
+        name: 'Ram'
     })
 })
 
 app.get('/help', (req, res) => {
     res.render('help', {
-        title: 'Help',
-        description: 'This is help page of weather app',
-        name: 'Ram',
-        contact: 'ME',
-        appname: 'weather'
-    })
-})
-
-
-app.get('/about', (req, res) => {
-    res.render('about', {
-        title: 'About',
-        description: 'We are small orgnization, and having 100 employee, Started app in 2020',
-        appname: 'weather',
+        title: 'help',
         name: 'Ram'
     })
 })
@@ -86,13 +98,6 @@ app.get('/weather', (req, res) => {
     });
 });
 
-app.get('/help/*', (req, res) => {
-    res.render('404', {
-        title: '404',
-        msg: 'help articale not found'
-    })
-})
-
 app.get('*', (req, res) => {
     res.render('404', {
         title: '404',
@@ -102,5 +107,5 @@ app.get('*', (req, res) => {
 
 
 app.listen(port, () => {
-    console.log('Starting web-server on port :'+ port)
+    console.log('Starting web-server on port :' + port)
 })

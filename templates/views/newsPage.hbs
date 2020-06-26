@@ -2,32 +2,36 @@
 <html>
 
 <head>
-    <title>about</title>
+    <title>news</title>
     <link rel="icon" href="/img/weather.png">
-    <link rel="stylesheet" href="/css/styles.css" </head>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
 
 <body>
     <!-- Header Section -->
     <header>
-        <div class="head1">ABOUT</div>
+        <div class="head1">NEWS</div>
         <div class="head2">NSE stock {{title}} page </div>
+
     </header>
     <!-- Menu Navigation Bar -->
     <div class="menu">
         <a href="/">HOME</a>
-        <a href="/news">NEWS</a>
+        <a href="/news" id="link2">NEWS</a>
         <a href="/about">ABOUT US</a>
         <a href="/help">HELP</a>
     </div>
 
-    <p>This website was created by Ram Meena.</p>
-    <p>It uses Mapbox and weather stack data to display forecast.</p>
-    <p>Create date 24-06-2020.</p>
+    <h3>India's top news</h3>
+
+    <div id="newsId"> </div>
 
     <!-- Footer Section -->
     <footer>
         <div>Created by {{>footer}}</div>
     </footer>
+
+    <script src="/js/newsClient.js"></script>
 </body>
 
 </html>

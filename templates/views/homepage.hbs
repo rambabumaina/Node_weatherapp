@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Weather</title>
+    <link rel="icon" href="/img/weather.png">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<!-- Body -->
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="head1">NSE STOCK</div>
+        <div class="head2">NSE stock {{title}} page </div>
+    </header>
+
+    <!-- Menu Navigation Bar -->
+    <div class="menu">
+        <a href="/">HOME</a>
+        <a href="/news" id="link2">NEWS</a>
+        <a href="/about">ABOUT US</a>
+        <a href="/help">HELP</a>
+        <div class="menu-log">
+            <a href="#login">LOGIN</a>
+        </div>
+    </div>
+
+    <!-- Body section -->
+    <div class="body_sec">
+        <section id="Content">
+            <h2>Search forecast in your city</h2>
+        </section>
+    </div>
+
+    <div>
+        <form>
+            <input placeholder="location">
+            <button>search</button>
+        </form>
+        <p id="forecastMsg"></p>
+        <p id="errormsg"></p>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div>Created by {{>footer}}</div>
+    </footer>
+
+    <script src="/js/weatherClient.js"></script>
+</body>
+</html>

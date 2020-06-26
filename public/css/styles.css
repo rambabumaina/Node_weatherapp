@@ -1,42 +1,72 @@
-h1 {
-    color: blue;
-}
-
 img {
     width: 250px;
 }
 
-body {
-    color      : #333333;
-    font-family: arial;
-    margin     : 0 auto;
-    padding    : 5px;
-
-    display       : flex;
-    flex-direction: column;
-    min-height    : 98vh;
-}
-
-.main-content {
-    flex-grow: 1;
-}
-
-
-footer {
-    color     : #888888;
-    border-top: 2px solid #4a2970;
-    margin-top: 16px;
-    
-}
-
-input{
+input {
     padding: 8px;
-    border: 1px solid #cccccc;
+    border : 1px solid #cccccc;
 }
 
-button{
-    padding: 8px;
-    border: 1px solid #888888;
-    cursor: pointer;
+button {
+    padding         : 8px;
+    border          : 1px solid #888888;
+    cursor          : pointer;
     background-color: slategrey;
 }
+
+.head1 {
+    font-size  : 40px;
+    color      : #009900;
+    font-weight: bold;
+}
+
+.head2 {
+    font-size    : 17px;
+    margin-bottom: 15px;
+}
+
+body {
+    margin             : 0 auto;
+    background-position: center;
+    background-size    : contain;
+    margin-left        : 2px;
+}
+
+.menu {
+    position        : sticky;
+    top             : 0;
+    background-color: #009900;
+    padding         : 10px 0px 10px 0px;
+    color           : white;
+    margin          : 0 auto;
+    overflow        : hidden;
+}
+
+.menu a {
+    float          : left;
+    color          : white;
+    text-align     : center;
+    padding        : 14px 16px;
+    text-decoration: none;
+    font-size      : 20px;
+}
+
+.menu-log {
+    right: auto;
+    float: right;
+}
+
+.body_sec {
+    margin-left: 0px;
+}
+
+footer {
+    position: fixed; 
+    padding: 10px 10px 0px 10px; 
+    bottom: 0; 
+    width: 100%; 
+    /* Height of the footer*/  
+    height: 40px; 
+    background-color: burlywood;
+    color           : black;
+  }
