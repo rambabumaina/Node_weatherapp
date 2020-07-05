@@ -4,8 +4,8 @@ const request = require('request');
 
 
 const url = config.news_url;
-console.log('news', url)
 const news  = (callback) =>{
+    console.log('news', url)
     request({url, json:true}, (error, response) =>{
         if(error){
             callback("unable to connect news API", undefined)

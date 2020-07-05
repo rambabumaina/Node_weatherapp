@@ -24,6 +24,13 @@ _____________________
 Node Commnds:
 1)npm uninstall -g nodemon : To unistall package globaly in your machine
 2)npm uninstall -g nodemon : To install Package galobaly
-3)npm intall nodemon@2.1.2 --save-dev : To install Package within the project
+3)npm install nodemon@2.1.2 --save-dev : To install Package within the project
+
+
+------------------------
+MonogDB Start Command:
+"C:\m-db\mongodb\bin\mongod.exe" --dbpath="C:\m-db\mongodb-data"
+ npm install mongodb --save
+ npm install mongoose
 
 */
