@@ -1,8 +1,11 @@
 const express = require('express');
 const path = require('path');
 const hbs = require('hbs');
-const service = require('./service/weatherService')
-const dbService = require('./service/userService')
+const service = require('./service/weatherService');
+require('../src/db/mongoose');
+require('../src/controller/UserController');
+const userRouter = require('./controller/UserController')
+const weatherRouter = require('./controller/WeatherContorller')
 
 const app = express();
 const port = process.env.PORT || 3000
@@ -22,17 +25,10 @@ app.use(express.static(publicdir));
 //This will set the body parameters for the post Methods
 app.use(express.json());
 
-//Controllers
-app.get('/', service.home)
-app.get('/news', service.news)
-app.get('/weather', service.weather)
-app.get('/newstoday', service.topNews)
-app.get('/about', service.about)
-app.get('/help', service.help)
+//Register Routers/controllers with express
+app.use(userRouter);
+app.use(weatherRouter);
 
-
-//db endpoints
-app.post('/users',dbService.createUsers)
 
 //404 for when no endpoint matches
 app.get('*', service.other)
@@ -44,5 +40,3 @@ app.listen(port, () => {
     console.log(__filename)
     console.log('WELCOME');
 })
-
-
