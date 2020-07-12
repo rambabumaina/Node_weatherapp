@@ -1,15 +1,43 @@
-const userModel = require('../db/model/user');
-const e = require('express');
+const userModel = require('../db/model/userModel');
 
 exports.createUsers = async (req, res) => {
     let user = new userModel(req.body)
     try {
+       const token = await user.generateAuthToken();
         await user.save()
-        res.status(201).send(user)
+        res.status(201).send({user, token})
     } catch (e) {
         res.status(400).send(e);
     }
 }
+
+exports.login = async (req, res) => {
+    try {
+        const user = await userModel.findByCredencials(req.body.email, req.body.password)
+        const token = await user.generateAuthToken();
+        res.status(200).send({user,token})
+    } catch (e) {
+        res.status(400).send(e);
+    }
+}
+
+exports.logout = async (req, res) => {
+    try {
+        req.user.tokens = req.user.tokens.filter((token) =>{
+            return token.token !== req.token
+        })
+        await req.user.save()
+        res.status(200).send()
+    } catch (e) {
+        res.status(500).send(e);
+    }
+}
+
+
+exports.getMyprofile = async (req, res) => {
+    res.status(200).send(req.user)
+}
+
 
 exports.getUsers = async (req, res) => {
     try {
@@ -41,8 +69,13 @@ exports.updateUser = async (req, res) => {
     if (!isvalidOperation) {
         return res.status(400).send({ error: 'Invalid body params' });
     }
+
     try {
-        const user = await userModel.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+        const user = await userModel.findById(req.params.id)
+        updates.forEach((update) => user[update] = req.body[update])
+        await user.save()
+
+        // const user = await userModel.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
         if (!user) {
             return res.status(404).send()
         }

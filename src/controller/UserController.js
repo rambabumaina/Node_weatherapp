@@ -1,7 +1,13 @@
 const express = require('express')
 const userService = require('../service/userService')
+const auth = require('../middleware/Auth');
 
 const router = new express.Router();
+
+//Athentication
+router.get('/users/me', auth, userService.getMyprofile);
+router.post('/users/login', userService.login);
+router.post('/users/logout', auth, userService.logout);
 
 //User Controllers
 router.post('/users', userService.createUsers);

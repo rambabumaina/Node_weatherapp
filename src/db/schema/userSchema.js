@@ -1,35 +1,42 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 
-const user = mongoose.model('user', {
+const userSchema = new mongoose.Schema({
     name: {
         type: String,
         require: true,
-        trim: true
+        trim: true,
+        lowercase: true
     },
     email: {
         type: String,
         require: true,
+        unique: true,
         trim: true,
         lowercase: true,
         validate(value) {
             if (!validator.isEmail(value)) {
-                throw new Error('provide valid email address')
+                throw new Error('Provide valid email address')
             }
         }
     },
     mobile: {
-        type: Number,
+        type: String,
         require: true,
+        trim: true,
         unique: true,
-        minlength: 11
+        validate(value) {
+            if (value.length !== 10) {
+                throw new Error('Provided mobile number not valid')
+            }
+        }
     },
     age: {
         type: Number,
         deafult: 0,
         validate(value) {
             if (value < 0) {
-                throw new Error('age must be a positive number');
+                throw new Error('Age must be a positive number');
             }
         }
     },
@@ -39,11 +46,17 @@ const user = mongoose.model('user', {
         trim: true,
         minlength: 7,
         validate(value) {
-            if (value.toLowerCase().includes('password')) {
+            if (value.includes('password')) {
                 throw new Error('password should not contain "password"')
             }
         }
     },
+    tokens: [{
+        token: {
+            type: String,
+            require: true
+        }
+    }],
     created_dt: {
         type: Date,
         default: Date.now()
@@ -52,6 +65,6 @@ const user = mongoose.model('user', {
         type: Date,
         default: null
     }
-})
+});
 
-module.exports = user;
+module.exports = userSchema;

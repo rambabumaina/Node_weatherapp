@@ -25,6 +25,11 @@ app.use(express.static(publicdir));
 //This will set the body parameters for the post Methods
 app.use(express.json());
 
+app.use((req, res, next) =>{
+    console.log(req.method, req.path)
+    next()
+})
+
 //Register Routers/controllers with express
 app.use(userRouter);
 app.use(weatherRouter);
