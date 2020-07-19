@@ -6,6 +6,7 @@ require('../src/db/mongoose');
 require('../src/controller/UserController');
 const userRouter = require('./controller/UserController')
 const weatherRouter = require('./controller/WeatherContorller')
+const taskRouter = require('./controller/TaskController')
 
 const app = express();
 const port = process.env.PORT || 3000
@@ -32,7 +33,9 @@ app.use((req, res, next) =>{
 
 //Register Routers/controllers with express
 app.use(userRouter);
+app.use(taskRouter);
 app.use(weatherRouter);
+
 
 
 //404 for when no endpoint matches

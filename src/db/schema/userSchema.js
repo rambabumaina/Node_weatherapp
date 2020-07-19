@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const { Timestamp } = require('mongodb');
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -56,15 +57,9 @@ const userSchema = new mongoose.Schema({
             type: String,
             require: true
         }
-    }],
-    created_dt: {
-        type: Date,
-        default: Date.now()
-    },
-    updated_dt: {
-        type: Date,
-        default: null
-    }
+    }]
+}, {
+    timestamps: true
 });
 
 module.exports = userSchema;
