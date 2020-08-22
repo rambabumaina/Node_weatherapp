@@ -34,6 +34,7 @@ Node Commnds:
 **************************************
 MonogDB Start Command in local:
 "C:\m-db\mongodb\bin\mongod.exe" --dbpath="C:\m-db\mongodb-data"
+"D:\RAM\mongodb\mongodb\bin\mongod.exe" --dbpath="D:\RAM\mongodb\mongodb-data"
 
 Db Dependencies:
  npm install mongodb --save
