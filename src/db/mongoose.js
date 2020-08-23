@@ -1,8 +1,10 @@
+const config = require('../config');
 const mongoose = require('mongoose');
 
-//Connect to the database
-mongoose.connect('mongodb://127.0.0.1:27017/weather-stock-app', {
+//connect to the database
+mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useFindAndModify:false
+    useFindAndModify: false
 })
+

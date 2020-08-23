@@ -10,7 +10,7 @@ userSchema.methods.generateAuthToken = async function () {
     const user = this;
 
     //Here : ram is token signature and user id is a value
-    const token = await jwt.sign({ _id: user._id.toString() }, 'ram')
+    const token = await jwt.sign({ _id: user._id.toString() }, process.env.JWT_SECRET)
     user.tokens = user.tokens.concat({ token })
     await user.save();
     return token
@@ -53,7 +53,8 @@ userSchema.methods.toJSON = function () {
 
     delete publicobj.password
     delete publicobj.tokens
-
+    delete publicobj.avatar
+    
     return publicobj;
 }
 
@@ -64,6 +65,7 @@ userSchema.methods.toJSON = function () {
 
     delete publicobj.password
     delete publicobj.tokens
+    delete publicobj.avatar
 
     return publicobj;
 }

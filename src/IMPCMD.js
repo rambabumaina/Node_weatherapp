@@ -40,4 +40,17 @@ Db Dependencies:
  npm install mongodb --save
  npm install mongoose
 
+Mongodb Atlus:
+userName: rammaina88
+Password: Brezza4148!
+connection string : mongodb+srv://rammaina88:<password>@cluster0.pfol9.mongodb.net/test
+
+
+ *************
+ ENV-CMD
+
+ Install env-cmd module to read the ENV variables
+ npm i env-cmd --save-dev
+
+
 */

@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
-const { Timestamp } = require('mongodb');
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -57,7 +56,10 @@ const userSchema = new mongoose.Schema({
             type: String,
             require: true
         }
-    }]
+    }],
+    avatar: {
+        type: Buffer
+    }
 }, {
     timestamps: true
 });

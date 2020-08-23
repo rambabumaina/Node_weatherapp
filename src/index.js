@@ -9,7 +9,7 @@ const weatherRouter = require('./controller/WeatherContorller')
 const taskRouter = require('./controller/TaskController')
 
 const app = express();
-const port = process.env.PORT || 3000
+const port = process.env.PORT
 
 //defines path to express config
 const publicdir = path.join(__dirname, '../public')
@@ -35,7 +35,6 @@ app.use((req, res, next) =>{
 app.use(userRouter);
 app.use(taskRouter);
 app.use(weatherRouter);
-
 
 
 //404 for when no endpoint matches
