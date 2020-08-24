@@ -7,22 +7,21 @@
 
 /*****************************************
 HEROKU:
+heroku login
+heroku keys:add  => TO add ssh key
+Heroku create ram-weatherapp => To create app in heroku
+heroku config:set key=value  => To set the key values for config
+heroku config => To check env variables 
+heroku config:unset key => TO Remove the envirinment variable
+git push heroku master => To deploy the app in heroku
+-----
+heroku config:set JWT_SECRET=weatherapp SENDGRID_API_KEY=SG.nWaEuhn4TfaVQBlpWhNz8Q.Sk-qQaQNNHOaUiWqkqo2SXRNNsNFpeH2Rnqp-0qrjMo
+heroku config:set MONGODB_URL="mongodb+srv://rammaina88:Brezza4148!@cluster0.pfol9.mongodb.net/weatherapp?retryWrites=true&w=majority"
 
-1) Setup SSH public key file with heroku
-heroku keys:add
-
-2) Create Heroku application name using below command
-Heroku create ram-stock-weather-app
-
-3) Make package.json as starting pint
+Start point of app is package.json
   "scripts": {
     "start": "node src/app.js"
   }
-
-4) Set port for the application which is running
-
-5) To push application on heroku and run. Application gety pulled codebase from Git
-git push heroku master
 
 ************************************
 Node Commnds:
@@ -51,6 +50,5 @@ connection string : mongodb+srv://rammaina88:<password>@cluster0.pfol9.mongodb.n
 
  Install env-cmd module to read the ENV variables
  npm i env-cmd --save-dev
-
 
 */
