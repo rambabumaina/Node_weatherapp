@@ -44,8 +44,15 @@ userName: rammaina88
 Password: Brezza4148!
 connection string : mongodb+srv://rammaina88:<password>@cluster0.pfol9.mongodb.net/test
 
+###################################
+LOCAL DB CONFIG: 
+Create config folder under projet and create dev.env under config folder.
+PORT=3000
+SENDGRID_API_KEY=SG.nWaEuhn4TfaVQBlpWhNz8Q.Sk-qQaQNNHOaUiWqkqo2SXRNNsNFpeH2Rnqp-0qrjMo
+MONGODB_URL=mongodb://127.0.0.1:27017/weather-stock-app
+JWT_SECRET=weatherapp
 
- *************
+ ************
  ENV-CMD
 
  Install env-cmd module to read the ENV variables
