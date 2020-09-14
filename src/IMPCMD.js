@@ -52,7 +52,7 @@ SENDGRID_API_KEY=SG.nWaEuhn4TfaVQBlpWhNz8Q.Sk-qQaQNNHOaUiWqkqo2SXRNNsNFpeH2Rnqp-
 MONGODB_URL=mongodb://127.0.0.1:27017/weather-stock-app
 JWT_SECRET=weatherapp
 
- ************
+************************************
  ENV-CMD
 
  Install env-cmd module to read the ENV variables
