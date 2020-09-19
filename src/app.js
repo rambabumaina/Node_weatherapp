@@ -1,4 +1,5 @@
 const express = require('express');
+const http = require('http');
 const path = require('path');
 const hbs = require('hbs');
 const service = require('./service/weatherService');
@@ -7,8 +8,10 @@ require('../src/controller/UserController');
 const userRouter = require('./controller/UserController')
 const weatherRouter = require('./controller/WeatherContorller')
 const taskRouter = require('./controller/TaskController')
+const chatRouter = require('./controller/Chat')
 
 const app = express();
+const server = http.createServer(app);
 
 //defines path to express config
 const publicdir = path.join(__dirname, '../public')
@@ -34,9 +37,10 @@ app.use((req, res, next) =>{
 app.use(userRouter);
 app.use(taskRouter);
 app.use(weatherRouter);
+app.use(chatRouter);
 
 //404 for when no endpoint matches
 app.get('*', service.other)
 
 
-module.exports = app;
+module.exports = server;

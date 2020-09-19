@@ -11,7 +11,7 @@ exports.home = ((req, res) => {
 
 exports.news = ((req, res) => {
     res.render('newsPage', {
-        title: 'home',
+        title: 'news',
         name: 'Ram'
     })
 })
@@ -35,7 +35,7 @@ exports.about = ((req, res) => {
     })
 })
 
-exports.help = ((req, res) => {
+exports.    help = ((req, res) => {
     res.render('help', {
         title: 'help',
         name: 'Ram'

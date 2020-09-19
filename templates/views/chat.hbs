@@ -2,13 +2,13 @@
 <html>
 
 <head>
-    <title>about</title>
+    <title>chat</title>
 </head>
 
 <body>
     <!-- Header Section -->
     <header>
-        <div class="head1">ABOUT</div>
+        <div class="head1">CHAT APP</div>
         <div class="head2">Welcome to {{title}} page </div>
     </header>
     <!-- Menu Navigation Bar -->
@@ -18,20 +18,28 @@
         <a href="/news">NEWS</a>
         <a href="/about">ABOUT US</a>
         <a href="/help">HELP</a>
-    </div>
+    </div><br/>
 
-    <p>This website was created by Ram Meena.</p>
-    <p>It uses Mapbox and weather stack data to display forecast.</p>
-    <p>It uses news api to display news.</p>
-    <p>Create date 24-06-2020.</p>
+    <form id="message-from">
+    <input name="message" placeholder="message" >
+    <button id="sendId">send</button>
+    <button 
+    style="border-width: medium; margin-right: 10px; background-color: blue; float: right;"
+    id="send-location">
+    Send your Location
+    </button>
+    </form>
+    
 
     <!-- Footer Section -->
     <footer>
         <div>Created by {{>footer}}</div>
     </footer>
-    <script src="/js/newsClient.js"></script>
-    <link rel="icon" href="/img/weather.png">
-    <link rel="stylesheet" href="/css/styles.css"
-</body>
 
+    <script src="/js/newsClient.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <Script src="/js/chatClient.js"></Script>
+    <link rel="icon" href="/img/weather.png">
+    <link rel="stylesheet" href="/css/styles.css" 
+</body>
 </html>

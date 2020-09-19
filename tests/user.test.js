@@ -50,17 +50,24 @@ test('Should fail login a user', async () => {
 })
 
 
-test('Should get user prfile', async () => {
+test('Should get user profile', async () => {
     await request(app).get('/users/me')
         .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
         .send()
         .expect(200)
 })
 
-test('Should not get user prfile for unauthenticate user', async () => {
+test('Should not get user profile for unauthenticate user', async () => {
     await request(app).get('/users/me')
         .send()
         .expect(401)
+})
+
+test('Should upload user profile', async () => {
+    await request(app).post('/users/me/avatar')
+        .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
+        .attach('avatar','tests/fixtures/rrr.jpg')
+        .expect(200)
 })
 
 test('Should delete user', async () => {
@@ -76,8 +83,4 @@ test('Should not delete user for unauthorized user', async () => {
         .expect(401)
 })
 
-test('Should upload user profile', async () => {
-    await request(app).delete('/users/me')
-        .send()
-        .expect(401)
-})
+
