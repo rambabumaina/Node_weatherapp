@@ -16,13 +16,20 @@ io.on('connection', (socket) => {
     socket.broadcast.emit('message', 'A new User has Joined!')
 
     //Send (USER A to all) Message from one user to all other users
-    socket.on('sendMessage', (message) => {
+    socket.on('sendMessage', (message,callback) => {
         io.emit('message', message)
+        callback()
     })
 
     //send message when User left the page
     socket.on('disconnect', () => {
         io.emit('message', 'A user has left!')
+    })
+
+    //Receive the location
+    socket.on('sendLocation', (cords,callback) =>{
+        io.emit('message', `https://google.com/maps?q=${cords.latitude},${cords.logitude}`)
+        callback()
     })
 })
 

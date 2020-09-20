@@ -7,6 +7,7 @@
 
 /*****************************************
 HEROKU:
+Application url: https://ram-weatherapp.herokuapp.com/
 heroku login
 heroku keys:add  => TO add ssh key
 Heroku create ram-weatherapp => To create app in heroku
