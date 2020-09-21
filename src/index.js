@@ -1,5 +1,7 @@
 const server = require('./app')
+const genrateMessage = require('./utils/message')
 const socketio = require('socket.io')
+
 
 //port to start application 
 const port = process.env.PORT
@@ -10,10 +12,10 @@ io.on('connection', (socket) => {
     console.log('New web socket connection')
 
     //Welcome message when you leand on the chat page
-    socket.emit('message', 'WELCOME TO CHAT APP')
+    socket.emit('message', genrateMessage('WELCOME!'))
 
     //Broadcast message when user joins
-    socket.broadcast.emit('message', 'A new User has Joined!')
+    socket.broadcast.emit('message', genrateMessage('A new User has Joined!'))
 
     //Send (USER A to all) Message from one user to all other users
     socket.on('sendMessage', (message,callback) => {
@@ -28,7 +30,7 @@ io.on('connection', (socket) => {
 
     //Receive the location
     socket.on('sendLocation', (cords,callback) =>{
-        io.emit('message', `https://google.com/maps?q=${cords.latitude},${cords.logitude}`)
+        io.emit('locationMessage', `https://google.com/maps?q=${cords.latitude},${cords.logitude}`)
         callback()
     })
 })

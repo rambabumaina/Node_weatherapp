@@ -5,21 +5,35 @@ const $messageForm = document.querySelector('#message-from');
 const $messageFormInput = $messageForm.querySelector('input');
 const $messageFormButton = $messageForm.querySelector('button');
 const $sendLocationButton = document.querySelector('#send-location');
-const $chatMessages = document.querySelector('#chat-messages')
+const $messages = document.querySelector('#messages')
+const $locationUrl = document.querySelector('#location-url')
 
 //Templates
 const messageTemplate = document.querySelector('#message-template').innerHTML
+const locationTemplate = document.querySelector('#location-template').innerHTML
 
-
-//Receive the message from server
+//Receive chat message from server
 socket.on('message', (message) => {
     console.log(`Message from server : ${message}`)
-    
-    const html = Mustache.render(messageTemplate, {
+    var html = Mustache.render(messageTemplate, {
         message
     })
-    
-    $chatMessages.insertAdjacentHTML('beforeend', html)
+
+    $messages.insertAdjacentHTML('beforeend',html)
+    console.log(html)
+        $messages.innerHTML =message
+})
+
+//Receive location from server
+socket.on('locationMessage', (url) => {
+    console.log(`location: ${url}`)
+    var html = Mustache.render(locationTemplate, {
+        url
+    })
+
+    console.log(html)
+    $locationUrl.insertAdjacentHTML('beforeend',html)
+    $locationUrl.innerHTML =url
 })
 
 //form data from chat.hbs
@@ -46,7 +60,6 @@ $messageForm.addEventListener('submit', (e) => {
 })
 
 $sendLocationButton.addEventListener('click', () => {
-
     $sendLocationButton.setAttribute('disabled', 'disabled')
     if (!navigator.geolocation) {
         return alert('Geolocation is not supported by your browser!')
