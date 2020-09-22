@@ -5,6 +5,6 @@ const genrateMessage = (text)=>{
     }
 }
 
-module.export ={
+module.exports ={
     genrateMessage
 }

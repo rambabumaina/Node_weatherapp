@@ -18,6 +18,7 @@ const publicdir = path.join(__dirname, '../public')
 const viewsdir = path.join(__dirname, '../templates/views')
 const partialsdir = path.join(__dirname, '../templates/partials')
 
+
 app.set('view engine', 'hbs')
 app.set('views', viewsdir)
 hbs.registerPartials(partialsdir)

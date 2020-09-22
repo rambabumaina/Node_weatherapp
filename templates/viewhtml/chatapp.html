@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chat App</title>
+    <link rel="icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="/css/styles-chat.css">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <!-- <header>
+        <div class="head1">Chat App</div>
+        <div class="head2">Welcome to chat app </div>
+    </header> -->
+    <!-- Menu Navigation Bar -->
+
+    <div class="menu">
+        <a href="/">HOME</a>
+        <a href="/chat">CHAT</a>
+        <a href="/news">NEWS</a>
+        <a href="/about">ABOUT US</a>
+        <a href="/help">HELP</a>
+    </div><br />
+
+    <div class="chat">
+        <div class="chat__sidebar">
+
+        </div>
+
+        <div class="chat__main">
+            <div id="messages" class="chat__messages"></div>
+
+            <div class="compose">
+                <form id="message-from">
+                    <input name="message" placeholder="message" required>
+                    <button style="border-width: thin; width : 80px;" id="sendId">send</button>
+                </form><br />
+            </div>
+            <button id="send-location">Send your Location</button>
+        </div>
+    </div>
+
+    <script id="message-template" type="text/html">
+        <div class="message">
+            <p>
+                <span class="message__name">RAM<span/>
+                <span class="message__metae">{{createdAt}}<span/>
+            </p>
+            <p>{{message}}</p>    
+        </div>
+    </script>
+
+    <script id="location-template" type="text/html">
+        <div class="message">
+            <p>
+                <span class="message__name">RAM<span/>
+                <span class="message__metae">{{createdAt}}<span/>
+            </p>
+            <p><a href="{{url}}" target="_blank">My currnt location<a></p>    
+        </div>
+    </script>
+
+
+
+    Footer Section
+    <footer>
+        <div>Created by Ram</div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/chatClient.js"></script>
+    <!-- <link rel="stylesheet" href="/css/styles.css"> -->
+</body>
+
+</html>

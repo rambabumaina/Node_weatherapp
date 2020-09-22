@@ -4,7 +4,7 @@ const news = require('../utils/news')
 
 exports.home = ((req, res) => {
     res.render('homepage', {
-        title: 'home',
+        title: 'Weather',
         name: 'Ram'
     })
 })

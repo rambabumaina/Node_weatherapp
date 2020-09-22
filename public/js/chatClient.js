@@ -5,35 +5,34 @@ const $messageForm = document.querySelector('#message-from');
 const $messageFormInput = $messageForm.querySelector('input');
 const $messageFormButton = $messageForm.querySelector('button');
 const $sendLocationButton = document.querySelector('#send-location');
-const $messages = document.querySelector('#messages')
-const $locationUrl = document.querySelector('#location-url')
+const $messages = document.getElementById('messages')
 
 //Templates
 const messageTemplate = document.querySelector('#message-template').innerHTML
 const locationTemplate = document.querySelector('#location-template').innerHTML
 
+//Options
+const {username, room} = Qs.parse(location.search, {ignoreQueryPrefix : true})
+
 //Receive chat message from server
 socket.on('message', (message) => {
-    console.log(`Message from server : ${message}`)
-    var html = Mustache.render(messageTemplate, {
-        message
+    var html = Mustache.to_html(messageTemplate, {
+        message: message.text,
+        createdAt: moment(message.createdAt).format('h:mm a')
     })
 
-    $messages.insertAdjacentHTML('beforeend',html)
-    console.log(html)
-        $messages.innerHTML =message
+    $messages.insertAdjacentHTML('beforeend', html)
 })
 
 //Receive location from server
-socket.on('locationMessage', (url) => {
-    console.log(`location: ${url}`)
+socket.on('locationMessage', (data) => {
+    console.log(`location: ${data.text}`)
     var html = Mustache.render(locationTemplate, {
-        url
+        url: data.text,
+        createdAt: moment(data.createdAt).format('h:mm a')
     })
 
-    console.log(html)
-    $locationUrl.insertAdjacentHTML('beforeend',html)
-    $locationUrl.innerHTML =url
+    $messages.insertAdjacentHTML('beforeend', html)
 })
 
 //form data from chat.hbs
@@ -55,7 +54,6 @@ $messageForm.addEventListener('submit', (e) => {
         if (error) {
             return console.log(error)
         }
-        console.log('Message delivered!')
     })
 })
 
@@ -76,3 +74,4 @@ $sendLocationButton.addEventListener('click', () => {
     })
 })
 
+socket.emit('join', {username, room})
