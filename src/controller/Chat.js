@@ -8,7 +8,7 @@ router.get('/chatjoin',(req, res) => {
     res.sendFile(viewHtml+'/chatapp.html')
 })
 
-router.get('/chat',(req, res) => {
+router.get('/chatapp',(req, res) => {
     res.sendFile(viewHtml+'/chat.html')
 })
 

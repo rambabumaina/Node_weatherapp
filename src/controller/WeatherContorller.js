@@ -6,7 +6,7 @@ const router = new express.Router();
 //Controllers
 router.get('/', weatherService.home)
 router.get('/weatherapp',weatherService.getWetherapp)
-router.get('/news', weatherService.news)
+router.get('/newsapp', weatherService.news)
 router.get('/weather', weatherService.weather)
 router.get('/newstoday', weatherService.topNews)
 router.get('/about', weatherService.about)
