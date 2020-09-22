@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>news</title>
     <link rel="icon" href="/img/newsicon.png">
@@ -10,6 +11,7 @@
     <!-- Menu Navigation Bar -->
     <div class="menu">
         <a href="/">HOME</a>
+        <a href="/weatherapp">WEATHER</a>
         <a href="/news">NEWS</a>
         <a href="/chat">CHAT</a>
         <a href="/about">ABOUT US</a>
@@ -17,12 +19,14 @@
     </div>
 
     <h3>India's top news</h3>
-     <a href="/news" id="link2">Click Here</a>
+    <a href="/news" id="link2">News</a>
     <div id="newsId"> </div>
 
     <!-- Footer Section -->
     <footer>
-        <div>Created by {{>footer}}</div>
+        <marquee behavior="alternate" direction="up" width="80%">
+            <marquee direction="right" behavior="alternate">Click on news to get the top news</marquee>
+        </marquee>
     </footer>
 
     <script src="/js/newsClient.js"></script>

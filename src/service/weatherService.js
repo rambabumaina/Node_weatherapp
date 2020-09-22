@@ -3,16 +3,23 @@ const forecast = require('../utils/forecast')
 const news = require('../utils/news')
 
 exports.home = ((req, res) => {
-    res.render('homepage', {
-        title: 'Weather',
-        name: 'Ram'
+    res.render('home', {
+        title: 'home',
+        name: 'Ram Meena'
+    })
+})
+
+exports.getWetherapp = ((req, res) => {
+    res.render('weather', {
+        title: 'Aeather',
+        name: 'Ram Meena'
     })
 })
 
 exports.news = ((req, res) => {
     res.render('newsPage', {
         title: 'news',
-        name: 'Ram'
+        name: 'Ram Meena'
     })
 })
 
@@ -31,14 +38,14 @@ exports.topNews = ((req, res) => {
 exports.about = ((req, res) => {
     res.render('about', {
         title: 'about',
-        name: 'Ram'
+        name: 'Ram Meena'
     })
 })
 
-exports.    help = ((req, res) => {
+exports.help = ((req, res) => {
     res.render('help', {
         title: 'help',
-        name: 'Ram'
+        name: 'Ram Meena'
     })
 })
 
