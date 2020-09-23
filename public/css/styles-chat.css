@@ -197,7 +197,7 @@ body {
 .menu {
     position        : sticky;
     top             : 0;
-    background-color: #009900;
+    background-color: darkmagenta;
     padding         : 10px 0px 10px 0px;
     color           : white;
     margin          : 0 auto;

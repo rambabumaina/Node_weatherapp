@@ -6,33 +6,73 @@ const $messageFormInput = $messageForm.querySelector('input');
 const $messageFormButton = $messageForm.querySelector('button');
 const $sendLocationButton = document.querySelector('#send-location');
 const $messages = document.getElementById('messages')
+const $sidebar = document.getElementById('sidebar')
 
 //Templates
 const messageTemplate = document.querySelector('#message-template').innerHTML
 const locationTemplate = document.querySelector('#location-template').innerHTML
+const sidebarTemplate = document.querySelector('#sidebar-template').innerHTML
 
 //Options
-const {username, room} = Qs.parse(location.search, {ignoreQueryPrefix : true})
+const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+
+
+const autoScroll = () =>{
+
+    //New Message Element 
+    const $newMessage = $messages.lastElementChild
+
+    //Hight of the new Message
+    const newMessageStyle = getComputedStyle($newMessage)
+    const newMessageMargin = parseInt(newMessageStyle.marginBottom)
+    const newMessageHeight = $newMessage.offsetHeight + newMessageMargin
+
+    //visible Height
+    const visibleHeight = $messages.offsetHeight
+    
+    //Height of message container
+    const containerHeight = $messages.scrollHeight
+
+    //How far have I scrolled?
+    const scrollOffset = $messages.scrollTop + visibleHeight
+
+    if(containerHeight - newMessageHeight <= scrollOffset){
+        $messages.scrollTop = $messages.scrollHeight
+    }
+}
 
 //Receive chat message from server
 socket.on('message', (message) => {
     var html = Mustache.to_html(messageTemplate, {
+        username: message.username,
         message: message.text,
         createdAt: moment(message.createdAt).format('h:mm a')
     })
 
     $messages.insertAdjacentHTML('beforeend', html)
+    autoScroll()
 })
 
 //Receive location from server
 socket.on('locationMessage', (data) => {
-    console.log(`location: ${data.text}`)
     var html = Mustache.render(locationTemplate, {
+        username: data.username,
         url: data.text,
         createdAt: moment(data.createdAt).format('h:mm a')
     })
 
     $messages.insertAdjacentHTML('beforeend', html)
+    autoScroll()
+})
+
+//Receive User List from server
+socket.on('userList', ({ room, users }) => {
+    const html = Mustache.render(sidebarTemplate, {
+        room,
+        users
+    })
+
+    $sidebar.innerHTML = html
 })
 
 //form data from chat.hbs
@@ -74,4 +114,7 @@ $sendLocationButton.addEventListener('click', () => {
     })
 })
 
-socket.emit('join', {username, room})
+socket.emit('join', { username, room }, (error) => {
+    alert(error)
+    location.href = '/chatapp'
+})
