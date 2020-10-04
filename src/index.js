@@ -5,7 +5,7 @@ const { addUser, getUser, removeUser, getUsersInRoom } = require('./utils/chatUs
 const { get } = require('./db/schema/userSchema')
 
 // socket.emit :
-// io.emil
+// io.emit
 // socket.to(room).emit
 // socket.broadcast.to(room).emit
 
