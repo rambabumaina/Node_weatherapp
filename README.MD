@@ -27,10 +27,10 @@ Start point of app is package.json
   }
 
 
-# Node Commnds needs to be run
+# How TO install nodemon on your system
 1)npm uninstall -g nodemon : To unistall package globaly in your machine
-2)npm uninstall -g nodemon : To install Package galobaly
-3)npm install nodemon@2.1.2 --save-dev : To install Package within the project
+2)npm install -g nodemon : To install Package galobaly
+3)npm install nodemon@2.1.2 --save-dev : To install specific within the project
 
 
 
@@ -40,24 +40,26 @@ Install mongo DB locally then septup below
 "C:\m-db\mongodb\bin\mongod.exe" --dbpath="C:\m-db\mongodb-data"
 "D:\RAM\mongodb\mongodb\bin\mongod.exe" --dbpath="D:\RAM\mongodb\mongodb-data"
 
-## Db Dependencies:
+## How to install Mongo Dependencies:
  npm install mongodb --save
  npm install mongoose
 
-Mongodb Atlus:
+# Mongodb Atlus Configurations
 userName: rammaina88
 Password: Brezza4148!
 connection string : mongodb+srv://rammaina88:<password>@cluster0.pfol9.mongodb.net/test
 
 
-# LOCAL DB CONFIG: 
-Create config folder under projet and create dev.env under config folder.
+# LOCAL DB CONFIG: Create config folder under projet and create dev.env under config folder
+
 PORT=3000
 SENDGRID_API_KEY=SG.nWaEuhn4TfaVQBlpWhNz8Q.Sk-qQaQNNHOaUiWqkqo2SXRNNsNFpeH2Rnqp-0qrjMo
 MONGODB_URL=mongodb://127.0.0.1:27017/weather-stock-app
 JWT_SECRET=weatherapp
 
 
-## ENV-CMD
- Install env-cmd module to read the ENV variables
+
+# Install env-cmd module to read the ENV variables
  npm i env-cmd --save-dev
+
+ # Note: If Mongo db not required comment line no:6 from App.js
