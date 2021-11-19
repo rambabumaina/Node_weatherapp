@@ -3,7 +3,7 @@ const http = require('http');
 const path = require('path');
 const hbs = require('hbs');
 const service = require('./service/weatherService');
-require('../src/db/mongoose');
+// require('../src/db/mongoose');
 require('../src/controller/UserController');
 const userRouter = require('./controller/UserController')
 const weatherRouter = require('./controller/WeatherContorller')

@@ -74,8 +74,6 @@ io.on('connection', (socket) => {
 })
 
 
-
-
 //Application starting point 
 server.listen(port, () => {
     console.log(`Started Weather-app on port ${port}!`)
